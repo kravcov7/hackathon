@@ -1,12 +1,35 @@
+"use client";
+
+import { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 
+interface Credential {
+  email: string;
+  password: string;
+}
+
 export default function LoginForm() {
+  const [credential, setCredential] = useState<Credential>({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCredential((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <form
       action="#"
+      onSubmit={handleSubmit}
       className="flex flex-col items-center gap-y-7 p-5 border-2 border-black rounded-lg"
     >
       <h2>Log In</h2>
+
       <label htmlFor="email" className="flex flex-col gap-y-1.5">
         Email
         <input
@@ -15,8 +38,11 @@ export default function LoginForm() {
           name="email"
           id="email"
           placeholder="Enter your email"
+          value={credential.email}
+          onChange={handleChange}
         />
       </label>
+
       <label htmlFor="password" className="flex flex-col gap-y-1.5">
         Password
         <input
@@ -25,6 +51,8 @@ export default function LoginForm() {
           name="password"
           id="password"
           placeholder="Enter your password"
+          value={credential.password}
+          onChange={handleChange}
         />
       </label>
       <button
