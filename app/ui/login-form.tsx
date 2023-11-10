@@ -2,14 +2,15 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
-
-interface Credential {
-  email: string;
-  password: string;
-}
+import validation from "../lib/login-validation";
+import { Credential, Error } from "../lib/definitions";
 
 export default function LoginForm() {
   const [credential, setCredential] = useState<Credential>({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState<Error>({
     email: "",
     password: "",
   });
@@ -20,6 +21,7 @@ export default function LoginForm() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrors(validation(credential));
   };
 
   return (
@@ -41,6 +43,7 @@ export default function LoginForm() {
           value={credential.email}
           onChange={handleChange}
         />
+        {errors.email && <span className="text-red-500">{errors.email}</span>}
       </label>
 
       <label htmlFor="password" className="flex flex-col gap-y-1.5">
@@ -54,6 +57,9 @@ export default function LoginForm() {
           value={credential.password}
           onChange={handleChange}
         />
+        {errors.password && (
+          <span className="text-red-500">{errors.password}</span>
+        )}
       </label>
       <button
         type="submit"
