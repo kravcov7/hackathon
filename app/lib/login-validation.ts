@@ -1,10 +1,10 @@
-import { Credential, Error } from "./definitions";
+import { Credential, LoginError } from "./definitions";
 
 export default function validation(data: Credential) {
   const emailPattern = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
   const passwordPattern =
     /^([@#](?=[^aeiou]{7,13}$)(?=[[:alnum:]]{7,13}$)(?=.*[A-Z]{1,}.*$).+)$/gm;
-  let error: Error = { email: "", password: "" };
+  let error: LoginError = { email: "", password: "" };
 
   if (data.email === "") {
     error.email = "Email should not be empty";

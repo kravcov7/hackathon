@@ -3,14 +3,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 import validation from "../lib/login-validation";
-import { Credential, Error } from "../lib/definitions";
+import { Credential, LoginError } from "../lib/definitions";
 
 export default function LoginForm() {
   const [credential, setCredential] = useState<Credential>({
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState<Error>({
+  const [errors, setErrors] = useState<LoginError>({
     email: "",
     password: "",
   });

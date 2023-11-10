@@ -3,7 +3,13 @@ export type Credential = {
   password: string;
 };
 
-export type Error = {
+export type LoginError = {
+  email: string;
+  password: string;
+};
+
+export type SignupError = {
+  name: string;
   email: string;
   password: string;
 };
