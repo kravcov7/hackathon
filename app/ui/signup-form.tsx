@@ -39,7 +39,7 @@ export default function SignupForm() {
         type="submit"
         className="py-2 px-5 rounded-lg bg-emerald-600 text-white"
       >
-        Submit
+        Create account
       </button>
     </form>
   );

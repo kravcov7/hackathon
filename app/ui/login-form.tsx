@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function LoginForm() {
   return (
     <form
@@ -29,14 +31,14 @@ export default function LoginForm() {
         type="submit"
         className="py-2 px-5 rounded-lg bg-emerald-600 text-white"
       >
-        Submit
+        Log In
       </button>
-      <button
-        type="button"
+      <Link
+        href="/form/signup"
         className="py-2 px-5 rounded-lg bg-indigo-600 text-white"
       >
         Create account
-      </button>
+      </Link>
     </form>
   );
 }
