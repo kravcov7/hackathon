@@ -27,9 +27,15 @@ export default function LoginForm() {
       </label>
       <button
         type="submit"
-        className="py-2 px-5 rounded-lg bg-indigo-500 text-white"
+        className="py-2 px-5 rounded-lg bg-emerald-600 text-white"
       >
         Submit
+      </button>
+      <button
+        type="button"
+        className="py-2 px-5 rounded-lg bg-indigo-600 text-white"
+      >
+        Create account
       </button>
     </form>
   );
