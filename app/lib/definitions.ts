@@ -1,4 +1,10 @@
-export type Credential = {
+export type LoginCredential = {
+  email: string;
+  password: string;
+};
+
+export type SignupCredential = {
+  name: string;
   email: string;
   password: string;
 };
